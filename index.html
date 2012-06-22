@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <script src="jquery.1.7.2.js"></script>
+    <script src="underscore-min.js"></script>
+    <script src="json/json2.js"></script>
+    <script src="backbone-min.js"></script>
+
+    <script src="https://shreddr.captricity.com/static/backbone/schema.js"></script>
+    <script>
+        captricity.endpointURL = 'https://shreddr.captricity.com/api/backbone/schema';
+
+        // SET ME: captricity.apiToken must be a user's API token (not a third party app id or key)
+        captricity.apiToken = 'A USER TOKEN GOES HERE';
+
+        // Create the schema object (which extends Backbone.Model)
+        window.schema = new captricity.APISchema();
+
+        function handleSchemaReady(){
+            console.log("The schema has been fetched and used to populate captricity.api.*");
+            // So, let's fetch a list of Captricity jobs...
+            window.jobs = new captricity.api.Jobs();
+            window.jobs.fetch({ success: handleJobsList });
+        }
+
+        function handleJobsList(){
+            console.log("The job list has been fetched and is in window.jobs");
+            for(var i=0; i < window.jobs.length; i++){
+                $('#jobs-list').append($('<li />').text(window.jobs.at(i).get('name')));
+            }
+        }
+
+        $(document).ready(function(){
+            // Fetch the schema from Captricity
+            window.schema.fetch({ success: handleSchemaReady });
+        });
+    </script>
+</head>
+<body>
+    <h1>Simplest Captricity Example</h1>
+
+    <ul id="jobs-list" />
+</body>
+</html>
