@@ -29,12 +29,12 @@ Here's how you define the API token so that the schema.js code can use it:
 
 These tags will load jQuery, underscore, json2, and backbone scripts, all of which are required to use schema.js.
 
-    &lt;script src="jquery.1.7.2.js">&lt;/script>
-    &lt;script src="underscore-min.js">&lt;/script>
-    &lt;script src="json/json2.js">&lt;/script>
-    &lt;script src="backbone-min.js">&lt;/script>
+    <script src="jquery.1.7.2.js"></script>
+    <script src="underscore-min.js"></script>
+    <script src="json/json2.js"></script>
+    <script src="backbone-min.js"></script>
 
-    &lt;script src="https://shreddr.captricity.com/static/backbone/schema.js">&lt;/script>
+    <script src="https://shreddr.captricity.com/static/backbone/schema.js"></script>
 
 ## Use captricity.APISchema instance to fetch the [schema document](https://shreddr.captricity.com/api/backbone/schema)
 
